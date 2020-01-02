@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Speech Recognition</title>
+    </head>
+    <body>
+        <center><h1>Voice Recognition and Display System</h1></center>
+        <br><br>
+        <center><button id="btn" onclick="recognition.start()">Start Record</button></center>
+        <br>
+        <h2 id="result"></h2> 
+    </body>
+    <script>
+    
+        const btn = document.getElementById("btn");
+
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.onstart = function()
+                {
+                    console.log("You Can Start Now");
+                }
+
+        recognition.onresult = function(event)
+                {
+                    console.log(event);
+                    var text = event.results[0][0].transcript;
+                    console.log(text); 
+                    document.getElementById("result").innerHTML = text;
+                    read(text);
+                   // read("How Are You");
+                }
+ 
+        function read(text)
+        {
+            var Speech = new SpeechSynthesisUtterance();
+            Speech.text = text;
+            window.speechSynthesis.speak(Speech);
+        }
+
+    </script>
+</html>
