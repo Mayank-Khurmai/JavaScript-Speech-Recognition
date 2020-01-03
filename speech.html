@@ -9,6 +9,7 @@
         <center><button id="btn" onclick="recognition.start()">Start Record</button></center>
         <br>
         <h2 id="result"></h2> 
+
     </body>
     <script>
     
@@ -29,7 +30,7 @@
                     console.log(text); 
                     document.getElementById("result").innerHTML = text;
                     read(text);
-                   // read("How Are You");
+                    //read("How Are You, क्या हाल है");
                 }
  
         function read(text)
